@@ -17,7 +17,7 @@ jobs:
         uses: docker/setup-buildx-action@v2
 
       - name: Cache Docker layers
-        uses: actions/cache@v2
+        uses: actions/cache@v3  # Updated from v2 to v3
         with:
           path: ~/.cache/docker
           key: ${{ runner.os }}-buildx-${{ github.sha }}
