@@ -1,0 +1,32 @@
+const express = require('express');
+const swaggerJsdoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+const app = express();
+const port = 3000;
+
+// Swagger definition
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'PeerHire API',
+      version: '1.0.0',
+      description: 'A simple API for PeerHire project',
+    },
+  },
+  apis: ['./index.js'], // Point to your API files for routes
+};
+
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
+
+// Serve Swagger API docs
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+// Define a simple API endpoint
+app.get('/api', (req, res) => {
+  res.send('Hello from PeerHire API!');
+});
+
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server is running at http://0.0.0.0:${port}`);
+});
