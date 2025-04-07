@@ -6,3 +6,4 @@ Triggering pipeline again
 # Trigger build
 # trigger again
 # retrigger build
+# fix: add context to docker buildx
