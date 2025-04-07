@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -38,6 +38,14 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/express-api
 
-      - name: Deploy to EC2 (optional for now)
-        run: |
-          # Add EC2 deployment commands here (we'll use Terraform later)
+      - name: Deploy to EC2 (Amazon Linux)
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_IP }}
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/express-api
+            sudo docker stop express-api || true
+            sudo docker rm express-api || true
+            sudo docker run -d --name express-api -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/express-api
