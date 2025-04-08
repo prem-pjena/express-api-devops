@@ -22,19 +22,22 @@ This repository demonstrates a complete DevOps workflow, featuring containerizat
 .
 ├── Dockerfile
 ├── docker-compose.yml
-├── .github/workflows/deploy.yml
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml
 ├── terraform/
 │   ├── main.tf
-│   └── ...
-├── routes/
-│   └── users.js
-├── app.js
+│   ├── outputs.tf
+│   └── provider.tf
 ├── swagger.js
 ├── assets/
 │   ├── swagger-root.png
 │   └── swagger-users.png
 ├── postman/
 │   └── PeerHire API.postman_collection.json
+├── index.js
+├── package.json
+├── package-lock.json
 └── README.md
 ```
 
