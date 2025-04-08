@@ -23,7 +23,11 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker buildx build --platform linux/amd64 -t ${{ secrets.DOCKER_USERNAME }}/express-api . --push
+          docker buildx build --platform linux/amd64 -t ${{ secrets.DOCKER_USERNAME }}/express-api . --load
+
+      - name: Push Docker image to Docker Hub
+        run: |
+          docker push ${{ secrets.DOCKER_USERNAME }}/express-api
 
       - name: Deploy to EC2 (SSH)
         uses: appleboy/ssh-action@v1.0.0
@@ -32,7 +36,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            docker pull ${{ secrets.DOCKER_USERNAME }}/express-api
-            docker stop express-api || true
-            docker rm express-api || true
-            docker run -d --name express-api -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/express-api
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/express-api
+            sudo docker stop express-api || true
+            sudo docker rm express-api || true
+            sudo docker run -d --name express-api -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/express-api
