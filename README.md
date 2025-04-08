@@ -62,7 +62,7 @@ Workflow includes:
 - Building and pushing Docker image to Docker Hub
 - SSH to EC2 and deploying via Docker Compose
 
-`.github/workflows/deploy.yml` handles everything!
+`.github/workflows/ci-cd.yml` handles everything!
 
 ---
 
@@ -101,8 +101,8 @@ Workflow includes:
 
 - Created a Postman collection to test all API routes
 - Tested:
-  - `GET /api/users`
-  - `POST /api/login`
+  - `GET /`
+  - `GET /api-docs`
 - Exported collection is available for download and import
 
 📥 [Download Postman Collection](https://github.com/prem-pjena/express-api-devops/blob/main/postman/PeerHire%20API.postman_collection.json)
@@ -116,10 +116,23 @@ To import:
 
 ## 🛠️ Infrastructure as Code (Terraform)
 
-- `terraform/main.tf` provisions an EC2 instance
-- Outputs public IP and automates infrastructure setup
-- Optional but included for bonus points 🎯
+- Infrastructure setup is fully automated using Terraform.
 
+  Files included:
+
+ - provider.tf: Configures AWS provider and region
+
+ - main.tf: Provisions the EC2 instance with necessary resources
+
+ - outputs.tf: Displays the EC2 instance public IP after deployment
+
+ Steps to use:
+
+ - cd terraform
+ - terraform init
+ - terraform apply
+   
+✅ After deployment, the public IP will be shown in your terminal output, which is used for accessing the live API.
 ---
 
 ## ✅ Project Checklist
