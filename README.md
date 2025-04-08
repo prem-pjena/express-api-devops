@@ -1,7 +1,7 @@
 
-# PeerHire DevOps Internship Assignment 🚀
+# Full-Stack DevOps Project: Express.js API with CI/CD, Docker & AWS 🚀
 
-This repository contains the complete submission for the **PeerHire DevOps Internship Assignment**. It showcases containerization, CI/CD, cloud deployment, Infrastructure as Code, monitoring, and documentation of an Express.js API.
+This repository demonstrates a complete DevOps workflow, featuring containerization, CI/CD pipeline setup, cloud deployment, Infrastructure as Code, monitoring, and documentation of an Express.js API.
 
 ---
 
@@ -33,6 +33,8 @@ This repository contains the complete submission for the **PeerHire DevOps Inter
 ├── assets/
 │   ├── swagger-root.png
 │   └── swagger-users.png
+├── postman/
+│   └── PeerHire API.postman_collection.json
 └── README.md
 ```
 
@@ -83,22 +85,29 @@ Workflow includes:
 #### 📸 Screenshots of Swagger UI
 
 - **Root Docs**
-  
+
   ![Swagger Root](./assets/swagger-root.png)
 
 - **Users Endpoint**
-  
+
   ![Swagger Users](./assets/swagger-users.png)
 
 ---
 
 ### 📬 Postman Collection
 
-- Created Postman collection for all routes
+- Created a Postman collection to test all API routes
 - Tested:
   - `GET /api/users`
   - `POST /api/login`
-- Exported collection file available
+- Exported collection is available for download and import
+
+📥 [Download Postman Collection](https://github.com/prem-pjena/express-api-devops/blob/main/postman/PeerHire%20API.postman_collection.json)
+
+To import:
+1. Open Postman
+2. Click **Import**
+3. Choose the JSON file or paste the GitHub raw URL
 
 ---
 
@@ -110,7 +119,7 @@ Workflow includes:
 
 ---
 
-## ✅ Submission Checklist
+## ✅ Project Checklist
 
 - [x] Express.js API created
 - [x] Dockerized with `Dockerfile` and `docker-compose.yml`
@@ -123,6 +132,8 @@ Workflow includes:
 
 ---
 
-## 🙌 Thank You
+## 🙌 Final Thoughts
 
-Happy to be part of the DevOps journey! 🚀
+Thank you for checking out this project!  
+I hope it provides a clear glimpse into my approach to DevOps workflows—from containerization to automation and infrastructure provisioning.  
+Feel free to explore, fork, and reach out with feedback or suggestions. 🚀
